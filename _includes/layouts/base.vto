@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link href="/style.css" rel="stylesheet" />
+    <style>
+      @media print {
+        body {
+          background: white !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <main
+      class="max-w-3xl mx-auto my-8 bg-white p-10 shadow-lg rounded-xl print:shadow-none print:p-0 print:rounded-none print:bg-white print:max-w-full print:my-0 print:text-black"
+    >
+      <!-- Header -->
+      <header class="text-center pb-4">
+        <h1 class="text-3xl font-bold uppercase">{{ profile.name }}</h1>
+        <p class="text-xl text-gray-700">{{ profile.title }}</p>
+        <p class="mt-2 text-sm text-gray-500">{{ profile.summary }}</p>
+
+        <div
+          class="mt-4 text-sm text-gray-600 flex flex-wrap justify-center gap-x-2 gap-y-1"
+        >
+          {{ for index, item of profile.contact }}
+            <div class="flex items-center gap-2">
+              <img
+                src="{{ item.icon.name |> icon(item.icon.library, item.icon.variant) }}"
+                class="h-4 w-4"
+                alt="{{ item.text }}"
+              />
+              <a
+                href="{{ item.link }}"
+                class="hover:underline text-gray-600 font-semibold"
+                target="_blank"
+              >
+                {{ item.text }}
+              </a>
+            </div>
+            {{ if index < profile.contact.length - 1 }}
+              <span class="mx-1 text-gray-400">|</span>
+            {{ /if }}
+          {{ /for }}
+        </div>
+      </header>
+
+      <!-- Sections -->
+      {{ for section of sections }}
+        <section class="mb-6">
+          <h2
+            class="text-xl font-semibold border-b pb-1 mb-3 uppercase tracking-wide"
+          >
+            {{ section.title }}
+          </h2>
+
+          {{ if section.type === "experience" }}
+            {{ for item of section.items }}
+              <div class="mb-3">
+                <div class="flex justify-between gap-2">
+                  <div>
+                    <h3>{{ item.role.name }}</h3>
+                    <div class="text-xs text-gray-500">
+                      {{ item.role.start }} to {{ item.role.end }}
+                    </div>
+                  </div>
+                  <div class="text-gray-500 text-right text-xs">
+                    <a
+                      href="{{ item.company.url }}"
+                      target="_blank"
+                      class="font-semibold"
+                    >{{ item.company.name }}</a>
+                    <div class="text-xs">
+                      <span>{{ item.company.location }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-xs text-justify mt-1">{{ item.role.description }}</div>
+              </div>
+            {{ /for }}
+          {{ /if }}
+          {{ if section.type === "education" }}
+            {{ for item of section.items }}
+              <div class="mb-4">
+                <div class="flex justify-between gap-2">
+                  <div>
+                    <h3>{{ item.degree.name }}</h3>
+                    <div class="text-xs text-gray-500">
+                      {{ item.degree.start }} to {{ item.degree.end }}
+                    </div>
+                  </div>
+                  <div class="text-gray-500 text-right text-xs">
+                    <a
+                      href="{{ item.school.url }}"
+                      target="_blank"
+                      class="font-semibold"
+                    >{{ item.school.name }}</a>
+                    <div class="text-xs">
+                      <span>{{ item.school.location }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {{ /for }}
+          {{ /if }}
+          {{ if section.type === "skills" }}
+            <ul
+              class="grid grid-cols-2 gap-1 text-sm list-disc list-inside text-gray-700"
+            >
+              {{ for skill of section.items }}
+                <li>{{ skill }}</li>
+              {{ /for }}
+            </ul>
+          {{ /if }}
+          {{ if section.type === "projects" }}
+            {{ for project of section.items }}
+              <div class="mb-3">
+                <a
+                  href="{{ project.url }}"
+                  class="text-blue-700 font-medium hover:underline"
+                >{{ project.name }}</a>
+                <p class="text-sm text-gray-600">{{ project.description }}</p>
+              </div>
+            {{ /for }}
+          {{ /if }}
+          {{ if section.type === "certifications" }}
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              {{ for item of section.items }}
+                <li>
+                  {{ item.name }}
+                  <span class="text-gray-500">({{ item.issued_date }}, {{ item.credential_id }})</span>
+                </li>
+              {{ /for }}
+            </ul>
+          {{ /if }}
+          {{ if section.type === "languages" }}
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              {{ for lang of section.items }}
+                <li>{{ lang.name }} — {{ lang.level }}</li>
+              {{ /for }}
+            </ul>
+          {{ /if }}
+        </section>
+      {{ /for }}
+    </main>
+  </body>
+</html>
