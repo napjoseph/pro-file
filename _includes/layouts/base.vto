@@ -49,13 +49,15 @@
       </header>
 
       <!-- Sections -->
-      {{ for index, section of sections }}
+      {{ for index, section of sections.filter((section) => section.show != false) }}
         <section class="{{ index < sections.length - 1 ? 'mb-6' : '' }}">
-          <h2
-            class="text-xl font-semibold border-b pb-1 mb-3 uppercase tracking-wide"
-          >
-            {{ section.title }}
-          </h2>
+          {{ if section.title }}
+            <h2
+              class="text-xl font-semibold border-b pb-1 mb-3 uppercase tracking-wide"
+            >
+              {{ section.title }}
+            </h2>
+          {{ /if }}
 
           {{ if section.type === "experience" }}
             {{ for item of section.items }}
@@ -131,7 +133,7 @@
           {{ if section.type === "certifications" }}
             <div>
               {{ for item of section.items }}
-                <div class="mb-2">
+                <div>
                   <div class="flex justify-between gap-2">
                     <div>
                       <h3>
@@ -151,6 +153,7 @@
                         <a
                           href="{{ item.credential_url }}"
                           target="_blank"
+                          class="uppercase"
                         >{{ item.credential_id }}</a>
                       </div>
                     </div>
@@ -175,6 +178,11 @@
                   </div>
                 </div>
               {{ /for }}
+            </div>
+          {{ /if }}
+          {{ if section.type === "footer" }}
+            <div class="text-md text-center text-sm">
+              {{ section.content }}
             </div>
           {{ /if }}
         </section>

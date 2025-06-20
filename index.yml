@@ -141,6 +141,51 @@ sections:
   - type: certifications
     title: Featured Certifications
     items:
+      - course_name: "Terraform Basics Training Course"
+        course_url: https://kodekloud.com/courses/terraform-basics-training-course
+        offered_by: KodeKloud
+        offered_by_url: https://kodekloud.com
+        credential_id: 8eb7fd11-db53-4b6f-9a0f-bb45913873ec
+        issued_by: KodeKloud
+        credential_url: https://learn.kodekloud.com/user/certificate/8eb7fd11-db53-4b6f-9a0f-bb45913873ec
+        issued_date: April 2025
+
+      - course_name: "Docker Training Course for the Absolute Beginner"
+        course_url: https://kodekloud.com/courses/docker-training-course-for-the-absolute-beginner
+        offered_by: KodeKloud
+        offered_by_url: https://kodekloud.com
+        credential_id: 2D16A9653F9D-2D16A360B8FB-2D16A3322F4F
+        issued_by: KodeKloud
+        credential_url: https://learn.kodekloud.com/user/certificate/2D16A9653F9D-2D16A360B8FB-2D16A3322F4F
+        issued_date: May 2024
+
+      - course_name: "Helm for Beginners"
+        course_url: https://kodekloud.com/courses/helm-for-beginners
+        offered_by: KodeKloud
+        offered_by_url: https://kodekloud.com
+        credential_id: 2D16A9653F9D-2DEF377EB781-2D16A3322F4F
+        issued_by: KodeKloud
+        credential_url: https://learn.kodekloud.com/user/certificate/2D16A9653F9D-2DEF377EB781-2D16A3322F4F
+        issued_date: April 2024
+
+      - course_name: "Kustomize"
+        course_url: https://kodekloud.com/courses/kustomize
+        offered_by: KodeKloud
+        offered_by_url: https://kodekloud.com
+        credential_id: 2D16A9653F9D-2DFD1E031808-2D16A3322F4F
+        issued_by: KodeKloud
+        credential_url: https://learn.kodekloud.com/user/certificate/2D16A9653F9D-2DFD1E031808-2D16A3322F4F
+        issued_date: November 2023
+
+      - course_name: "Kubernetes for the Absolute Beginners - Hands-on Tutorial"
+        course_url: https://kodekloud.com/courses/kubernetes-for-the-absolute-beginners-hands-on-tutorial
+        offered_by: KodeKloud
+        offered_by_url: https://kodekloud.com
+        credential_id: 2D16A9653F9D-2D16A360DE80-2D16A3322F4F
+        issued_by: KodeKloud
+        credential_url: https://learn.kodekloud.com/user/certificate/2D16A9653F9D-2D16A360DE80-2D16A3322F4F
+        issued_date: November 2023
+    
       - course_name: "AWS Cloud Technical Essentials"
         course_url: https://www.coursera.org/learn/aws-cloud-technical-essentials/
         offered_by: Amazon Web Services
@@ -152,7 +197,7 @@ sections:
 
       - course_name: "Apollo Graph Developer - Professional Certification"
         course_url: https://www.apollographql.com/tutorials/certifications/apollo-graph-professional
-        offered_by: Apollo
+        offered_by: Apollo GraphQL
         offered_by_url: https://www.apollographql.com/
         issued_by: Apollo GraphQL
         issued_date: April 2023
@@ -301,3 +346,6 @@ sections:
         level: Professional Proficiency
       - name: Filipino
         level: Native
+
+  - type: footer
+    content: See full profile at <a href="https://napjose.ph/calub" class="underline font-semibold text-center" target="_blank">napjose.ph/calub</a>.
