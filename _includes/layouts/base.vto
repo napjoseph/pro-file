@@ -49,8 +49,8 @@
       </header>
 
       <!-- Sections -->
-      {{ for section of sections }}
-        <section class="mb-6">
+      {{ for index, section of sections }}
+        <section class="{{ index < sections.length - 1 ? 'mb-6' : '' }}">
           <h2
             class="text-xl font-semibold border-b pb-1 mb-3 uppercase tracking-wide"
           >
@@ -78,7 +78,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="text-xs text-justify mt-1">{{ item.role.description }}</div>
+                <div class="text-xs text-justify mt-1">
+                  {{ item.role.description }}
+                </div>
               </div>
             {{ /for }}
           {{ /if }}
@@ -127,14 +129,35 @@
             {{ /for }}
           {{ /if }}
           {{ if section.type === "certifications" }}
-            <ul class="list-disc list-inside text-sm text-gray-700">
+            <div>
               {{ for item of section.items }}
-                <li>
-                  {{ item.name }}
-                  <span class="text-gray-500">({{ item.issued_date }}, {{ item.credential_id }})</span>
-                </li>
+                <div class="mb-2">
+                  <div class="flex justify-between gap-2">
+                    <div>
+                      <h3>
+                        <a href="{{ item.course_url }}" target="_blank">{{
+                          item.course_name
+                        }}</a>
+                      </h3>
+                      <div class="text-xs text-gray-500">
+                        {{ item.issued_date }}
+                      </div>
+                    </div>
+                    <div class="text-gray-500 text-right text-xs">
+                      <span class="font-semibold">
+                        <a href="{{ item.offered_by_url }}" target="_blank">
+                          {{ item.offered_by }}</a></span>
+                      <div class="text-xs">
+                        <a
+                          href="{{ item.credential_url }}"
+                          target="_blank"
+                        >{{ item.credential_id }}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               {{ /for }}
-            </ul>
+            </div>
           {{ /if }}
           {{ if section.type === "languages" }}
             <ul class="list-disc list-inside text-sm text-gray-700">
