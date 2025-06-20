@@ -160,11 +160,22 @@
             </div>
           {{ /if }}
           {{ if section.type === "languages" }}
-            <ul class="list-disc list-inside text-sm text-gray-700">
-              {{ for lang of section.items }}
-                <li>{{ lang.name }} — {{ lang.level }}</li>
+            <div>
+              {{ for item of section.items }}
+                <div class="mb-2">
+                  <div class="flex justify-between gap-2">
+                    <div>
+                      <h3>
+                        {{ item.name }}</a>
+                      </h3>
+                      <div class="text-xs text-gray-500">
+                        {{ item.level }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               {{ /for }}
-            </ul>
+            </div>
           {{ /if }}
         </section>
       {{ /for }}
