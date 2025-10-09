@@ -3,6 +3,7 @@ title: Curriculum Vitae of Nap Joseph Calub
 profile:
   name: Nap Joseph Calub
   title: Senior Software Engineer
+  summary: Senior Platform Engineer specializing in DevOps, CI/CD automation, and cloud-native infrastructure. 10+ years of experience delivering scalable, resilient full-stack solutions at companies like Oracle and Google.
 
   contact:
     - icon:
@@ -195,7 +196,7 @@ sections:
           - Zod
           - OpenAPI / Swagger / Scalar
 
-      - name: Join a Connect Group in Favor Church
+      - name: Join a Connect Group at Favor Church
         url: https://favor.church/connect
         date: December 2024 - February 2025
         description: Built an interactive sign-up platform for Christian small discipleship groups with real-time integration to Fluro church management system. Created a seamless registration experience for connecting church members to community groups.

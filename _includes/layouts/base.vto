@@ -23,28 +23,55 @@
         <p class="text-xl text-gray-700 font-semibold mt-1">{{ profile.title }}</p>
         <p class="mt-2 text-sm text-gray-500">{{ profile.summary }}</p>
 
-        <div
-          class="mt-4 text-sm text-gray-600 flex flex-wrap justify-center gap-x-2 gap-y-1"
-        >
-          {{ for index, item of profile.contact }}
-            <div class="flex items-center gap-2">
-              <img
-                src="{{ item.icon.name |> icon(item.icon.library, item.icon.variant) }}"
-                class="h-4 w-4"
-                alt="{{ item.text }}"
-              />
-              <a
-                href="{{ item.link }}"
-                class="hover:underline text-gray-700 hover:text-gray-900 font-semibold transition-colors"
-                target="_blank"
-              >
-                {{ item.text }}
-              </a>
-            </div>
-            {{ if index < profile.contact.length - 1 }}
-              <span class="mx-1 text-gray-300">|</span>
-            {{ /if }}
-          {{ /for }}
+        <div class="mt-4 text-sm text-gray-600 flex flex-col items-center gap-1">
+          <!-- First row: 3 items -->
+          <div class="flex flex-wrap justify-center gap-x-2">
+            {{ for index, item of profile.contact }}
+              {{ if index < 3 }}
+                <div class="flex items-center gap-2">
+                  <img
+                    src="{{ item.icon.name |> icon(item.icon.library, item.icon.variant) }}"
+                    class="h-4 w-4"
+                    alt="{{ item.text }}"
+                  />
+                  <a
+                    href="{{ item.link }}"
+                    class="hover:underline text-gray-700 hover:text-gray-900 transition-colors"
+                    target="_blank"
+                  >
+                    {{ item.text }}
+                  </a>
+                </div>
+                {{ if index < 2 }}
+                  <span class="mx-1 text-gray-300">|</span>
+                {{ /if }}
+              {{ /if }}
+            {{ /for }}
+          </div>
+          <!-- Second row: 2 items -->
+          <div class="flex flex-wrap justify-center gap-x-2">
+            {{ for index, item of profile.contact }}
+              {{ if index >= 3 }}
+                <div class="flex items-center gap-2">
+                  <img
+                    src="{{ item.icon.name |> icon(item.icon.library, item.icon.variant) }}"
+                    class="h-4 w-4"
+                    alt="{{ item.text }}"
+                  />
+                  <a
+                    href="{{ item.link }}"
+                    class="hover:underline text-gray-700 hover:text-gray-900 transition-colors"
+                    target="_blank"
+                  >
+                    {{ item.text }}
+                  </a>
+                </div>
+                {{ if index < profile.contact.length - 1 }}
+                  <span class="mx-1 text-gray-300">|</span>
+                {{ /if }}
+              {{ /if }}
+            {{ /for }}
+          </div>
         </div>
       </header>
 
