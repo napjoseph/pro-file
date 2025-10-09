@@ -13,14 +13,14 @@
       }
     </style>
   </head>
-  <body class="bg-gray-100 text-gray-900">
+  <body class="bg-gray-50 text-gray-900">
     <main
       class="max-w-3xl mx-auto my-8 bg-white p-10 shadow-lg rounded-xl print:shadow-none print:p-0 print:rounded-none print:bg-white print:max-w-full print:my-0 print:text-black"
     >
       <!-- Header -->
-      <header class="text-center pb-4">
-        <h1 class="text-3xl font-bold uppercase">{{ profile.name }}</h1>
-        <p class="text-xl text-gray-700">{{ profile.title }}</p>
+      <header class="text-center pb-6">
+        <h1 class="text-4xl font-bold uppercase text-gray-900">{{ profile.name }}</h1>
+        <p class="text-xl text-gray-700 font-semibold mt-1">{{ profile.title }}</p>
         <p class="mt-2 text-sm text-gray-500">{{ profile.summary }}</p>
 
         <div
@@ -35,14 +35,14 @@
               />
               <a
                 href="{{ item.link }}"
-                class="hover:underline text-gray-600 font-semibold"
+                class="hover:underline text-gray-700 hover:text-gray-900 font-semibold transition-colors"
                 target="_blank"
               >
                 {{ item.text }}
               </a>
             </div>
             {{ if index < profile.contact.length - 1 }}
-              <span class="mx-1 text-gray-400">|</span>
+              <span class="mx-1 text-gray-300">|</span>
             {{ /if }}
           {{ /for }}
         </div>
@@ -50,10 +50,10 @@
 
       <!-- Sections -->
       {{ for index, section of sections.filter((section) => section.show != false) }}
-        <section class="{{ index < sections.length - 1 ? 'mb-6' : '' }}">
+        <section class="{{ index < sections.length - 1 && section.type !== 'footer' ? 'mb-8' : '' }} {{ section.type === 'certifications' ? 'print:break-inside-avoid' : '' }}">
           {{ if section.title }}
             <h2
-              class="text-xl font-semibold border-b pb-1 mb-3 uppercase tracking-wide"
+              class="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4 uppercase tracking-wide text-gray-900"
             >
               {{ section.title }}
             </h2>
@@ -61,11 +61,11 @@
 
           {{ if section.type === "experience" }}
             {{ for item of section.items }}
-              <div class="mb-3">
+              <div class="mb-5 print:break-inside-avoid">
                 <div class="flex justify-between gap-2">
                   <div>
-                    <h3>{{ item.role.name }}</h3>
-                    <div class="text-xs text-gray-500">
+                    <h3 class="font-semibold text-sm text-gray-900">{{ item.role.name }}</h3>
+                    <div class="text-xs text-gray-500 mt-0.5">
                       {{ item.role.start }} to {{ item.role.end }}
                     </div>
                   </div>
@@ -73,14 +73,14 @@
                     <a
                       href="{{ item.company.url }}"
                       target="_blank"
-                      class="font-semibold"
+                      class="font-semibold text-gray-700 hover:text-gray-900 hover:underline transition-colors"
                     >{{ item.company.name }}</a>
-                    <div class="text-xs">
+                    <div class="text-xs mt-0.5">
                       <span>{{ item.company.location }}</span>
                     </div>
                   </div>
                 </div>
-                <div class="text-xs text-justify mt-1">
+                <div class="text-xs text-justify mt-2 text-gray-700 leading-relaxed">
                   {{ item.role.description }}
                 </div>
               </div>
@@ -91,8 +91,8 @@
               <div class="mb-4">
                 <div class="flex justify-between gap-2">
                   <div>
-                    <h3>{{ item.degree.name }}</h3>
-                    <div class="text-xs text-gray-500">
+                    <h3 class="font-semibold text-sm text-gray-900">{{ item.degree.name }}</h3>
+                    <div class="text-xs text-gray-500 mt-0.5">
                       {{ item.degree.start }} to {{ item.degree.end }}
                     </div>
                   </div>
@@ -100,9 +100,9 @@
                     <a
                       href="{{ item.school.url }}"
                       target="_blank"
-                      class="font-semibold"
+                      class="font-semibold text-gray-700 hover:text-gray-900 hover:underline transition-colors"
                     >{{ item.school.name }}</a>
-                    <div class="text-xs">
+                    <div class="text-xs mt-0.5">
                       <span>{{ item.school.location }}</span>
                     </div>
                   </div>
@@ -111,49 +111,72 @@
             {{ /for }}
           {{ /if }}
           {{ if section.type === "skills" }}
-            <ul
-              class="grid grid-cols-2 gap-1 text-sm list-disc list-inside text-gray-700"
-            >
-              {{ for skill of section.items }}
-                <li>{{ skill }}</li>
+            <div class="grid grid-cols-1 md:grid-cols-3 print:grid-cols-3 gap-6">
+              {{ for column of section.columns }}
+                <div class="space-y-4">
+                  {{ for item of column.items }}
+                    <div>
+                      <h3 class="font-semibold text-gray-900 text-sm mb-2">{{ item.category }}</h3>
+                      <ul class="text-xs text-gray-700 space-y-1">
+                        {{ for skill of item.skills }}
+                          <li class="flex items-start">
+                            <span class="text-gray-400 mr-2">▪</span>
+                            <span>{{ skill }}</span>
+                          </li>
+                        {{ /for }}
+                      </ul>
+                    </div>
+                  {{ /for }}
+                </div>
               {{ /for }}
-            </ul>
+            </div>
           {{ /if }}
           {{ if section.type === "projects" }}
             {{ for project of section.items }}
-              <div class="mb-3">
-                <a
-                  href="{{ project.url }}"
-                  class="text-blue-700 font-medium hover:underline"
-                >{{ project.name }}</a>
-                <p class="text-sm text-gray-600">{{ project.description }}</p>
+              <div class="mb-5">
+                <div class="flex justify-between items-start gap-2 mb-1">
+                  <h3 class="font-semibold text-sm text-gray-900">
+                    {{ if project.url }}
+                      <a href="{{ project.url }}" target="_blank" class="hover:text-gray-700 hover:underline transition-colors">{{ project.name }}</a>
+                    {{ else }}
+                      {{ project.name }}
+                    {{ /if }}
+                  </h3>
+                  <span class="text-xs text-gray-500 whitespace-nowrap">{{ project.date }}</span>
+                </div>
+                <p class="text-xs text-gray-700 mb-2 leading-relaxed">{{ project.description }}</p>
+                <div class="flex flex-wrap gap-1">
+                  {{ for tech of project.technologies }}
+                    <span class="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded">{{ tech }}</span>
+                  {{ /for }}
+                </div>
               </div>
             {{ /for }}
           {{ /if }}
           {{ if section.type === "certifications" }}
             <div>
               {{ for item of section.items }}
-                <div>
+                <div class="mb-2">
                   <div class="flex justify-between gap-2">
                     <div>
-                      <h3>
-                        <a href="{{ item.course_url }}" target="_blank">{{
+                      <h3 class="font-semibold text-sm text-gray-900">
+                        <a href="{{ item.course_url }}" target="_blank" class="hover:text-gray-700 hover:underline transition-colors">{{
                           item.course_name
                         }}</a>
                       </h3>
-                      <div class="text-xs text-gray-500">
+                      <div class="text-xs text-gray-500 mt-0.5">
                         {{ item.issued_date }}
                       </div>
                     </div>
                     <div class="text-gray-500 text-right text-xs">
-                      <span class="font-semibold">
-                        <a href="{{ item.offered_by_url }}" target="_blank">
+                      <span class="font-semibold text-gray-700">
+                        <a href="{{ item.offered_by_url }}" target="_blank" class="hover:text-gray-900 hover:underline transition-colors">
                           {{ item.offered_by }}</a></span>
-                      <div class="text-xs">
+                      <div class="text-xs mt-0.5">
                         <a
                           href="{{ item.credential_url }}"
                           target="_blank"
-                          class="uppercase"
+                          class="uppercase text-gray-400 hover:text-gray-700 transition-colors"
                         >{{ item.credential_id }}</a>
                       </div>
                     </div>
@@ -181,7 +204,7 @@
             </div>
           {{ /if }}
           {{ if section.type === "footer" }}
-            <div class="text-md text-center text-sm">
+            <div class="text-md text-center text-sm text-gray-600">
               {{ section.content }}
             </div>
           {{ /if }}
