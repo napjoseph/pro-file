@@ -52,7 +52,7 @@ sections:
         role:
           name: Senior Platform Engineer
           start: November 2023
-          end: present
+          end: October 2025
           description: I am part of the Pipeline-as-a-Service (PASS) team, responsible for designing, implementing, and maintaining the end-to-end build and release pipelines for all applications within our organization. Our mission is to provide a standardized, scalable, and efficient route-to-production, ensuring smooth and secure deployments across multiple platforms. In this role, I focus on optimizing the continuous integration and deployment experience for all product teams, ensuring releases are timely, reliable, and compliant. By leveraging automation and best-in-class tooling, our team delivers a resilient, self-service pipeline infrastructure that accelerates feature delivery across the organization.
       - company:
           name: Oracle
