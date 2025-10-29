@@ -397,5 +397,5 @@ sections:
       - name: Filipino
         level: Native
 
-  - type: footer
-    content: See full profile at <a href="https://napjose.ph/calub" class="underline font-semibold text-center" target="_blank">napjose.ph/calub</a>.
+  # - type: footer
+  #   content: See full profile at <a href="https://napjose.ph/calub" class="underline font-semibold text-center" target="_blank">napjose.ph/calub</a>.
