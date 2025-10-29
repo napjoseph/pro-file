@@ -208,7 +208,7 @@ sections:
           - Fluro API
 
       - name: Domain Availability Monitor
-        date: December 2024 - Present
+        date: December 2024 - October 2025
         description: Developed an automated system that monitors domain accessibility across geographic regions and dynamically updates DNS records when blocks are detected. Integrates with Cloudflare API for DNS management and implements automatic failover routing using infrastructure-as-code principles.
         technologies:
           - Python
@@ -218,7 +218,7 @@ sections:
           - Cloudflare API
 
       - name: Deployment Orchestrator
-        date: November 2023 - Present
+        date: November 2023 - October 2025
         description: Maintained an application that orchestrates the deployment of production stages across all apps, ensuring only one app can deploy at any given time. Handles multi-platform deployments with automatic rollback on failures.
         technologies:
           - Python
@@ -228,7 +228,7 @@ sections:
           - JIRA API
 
       - name: GitLab Webhook Receiver
-        date: November 2023 - Present
+        date: November 2023 - October 2025
         description: Maintained a tool that handles JIRA ticket creation and updates based on GitLab CI pipeline job statuses. Creates respective tickets for each platform an app is released into for audit purposes.
         technologies:
           - Python
@@ -397,5 +397,5 @@ sections:
       - name: Filipino
         level: Native
 
-  # - type: footer
-  #   content: See full profile at <a href="https://napjose.ph/calub" class="underline font-semibold text-center" target="_blank">napjose.ph/calub</a>.
+  - type: footer
+    content: See full profile at <a href="https://napjose.ph/calub" class="underline font-semibold text-center" target="_blank">napjose.ph/calub</a>.
