@@ -77,7 +77,7 @@
 
       <!-- Sections -->
       {{ for index, section of sections.filter((section) => section.show != false) }}
-        <section class="{{ index < sections.length - 1 && section.type !== 'footer' ? 'mb-8' : '' }} {{ section.type === 'certifications' ? 'print:break-inside-avoid' : '' }}">
+        <section class="{{ index < sections.filter((section) => section.show != false).length - 1 && section.type !== 'footer' ? 'mb-8' : '' }} {{ section.type === 'certifications' ? 'print:break-inside-avoid' : '' }}">
           {{ if section.title }}
             <h2
               class="text-xl font-semibold border-b-2 border-gray-800 pb-2 mb-4 uppercase tracking-wide text-gray-900"
