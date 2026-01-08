@@ -160,7 +160,7 @@
           {{ /if }}
           {{ if section.type === "projects" }}
             {{ for project of section.items }}
-              <div class="mb-5">
+              <div class="mb-5 print:break-inside-avoid">
                 <div class="flex justify-between items-start gap-2 mb-1">
                   <h3 class="font-semibold text-sm text-gray-900">
                     {{ if project.url }}

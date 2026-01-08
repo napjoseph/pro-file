@@ -24,8 +24,8 @@ profile:
         name: globe
         library: fontawesome
         variant: solid
-      text: napjose.ph/calub
-      link: https://napjose.ph/calub
+      text: napjose.ph
+      link: https://napjose.ph
 
     - icon:
         name: linkedin
@@ -184,6 +184,16 @@ sections:
   - type: projects
     title: Related Projects
     items:
+      - name: Confidential Price Aggregator and Personal Shopper Service
+        date: October 2025 - November 2025
+        description: Developed a real-time price aggregation service that collects pricing data from multiple external vendors. The service ensures data accuracy and consistency, providing a unified interface for consumers to get the cheapest prices of their favorite products.
+        technologies:
+          - Convex DB
+          - Next.js
+          - TypeScript
+          - Clerk
+          - Meilisearch
+
       - name: Open Congress API
         url: https://open-congress-api.bettergov.ph
         date: October 2025 - November 2025
@@ -196,7 +206,7 @@ sections:
           - Zod
           - OpenAPI / Swagger / Scalar
 
-      - name: Common Utilies Dashboard
+      - name: Common JIRA Utilities Dashboard
         date: June 2025 - October 2025
         description: Created a dashboard for visualizing and auditing JIRA tickets created by various internal automation tools. The dashboard provides insights into ticket statuses, transitions, error rates, and performance metrics, enabling teams to monitor and improve their automation processes effectively.
         technologies:
